@@ -1,8 +1,8 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 
-// On GitHub Pages the site lives under /<repo>; the deploy workflow sets BASE_PATH.
+// Served from the root of cloudrs.dev (GitHub Pages custom domain).
 export default defineConfig({
-  site: process.env.SITE_URL || "https://pablozr.github.io",
+  site: process.env.SITE_URL || "https://cloudrs.dev",
   base: process.env.BASE_PATH || "/",
 });

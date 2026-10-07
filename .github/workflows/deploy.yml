@@ -5,7 +5,7 @@ name: Deploy
 # site also rebuilds daily and when cloudrs sends a "cloudrs-release" dispatch.
 on:
   push:
-    branches: [main]
+    branches: [master]
   schedule:
     - cron: "0 6 * * *"
   repository_dispatch:
@@ -34,7 +34,7 @@ jobs:
       - run: npm run build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BASE_PATH: /${{ github.event.repository.name }}
+          SITE_URL: https://cloudrs.dev
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
