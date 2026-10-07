@@ -1,35 +1,49 @@
 ---
 import "../styles/showcase.css";
+import { asset } from "../lib/url.js";
+
+// Real captures of 0.1.0-beta.1 on Windows 11 (window only, 1424×892), in public/assets/shots/
+// as <id>-dark.webp, plus <id>-light.webp where `light` is set.
+const SHOTS = [
+  { id: "home", tab: "Home", light: true, alt: "cloudrs Home: a greeting, the track now playing, quick tiles and your playlists" },
+  { id: "trending", tab: "Trending", alt: "cloudrs Home scrolled to Trending on SoundCloud, with genre pills and cover cards" },
+  { id: "search", tab: "Search", alt: "cloudrs search results with Tracks, People, Playlists and Albums tabs" },
+  { id: "track", tab: "Track", alt: "cloudrs track page with a large waveform seek bar and related tracks" },
+  { id: "playlist", tab: "Playlist", alt: "cloudrs playlist page with a big cover, Play and the track list" },
+  { id: "library", tab: "Library", alt: "cloudrs Library: a grid of playlist covers with filters and New playlist" },
+  { id: "jam", tab: "Jam", alt: "cloudrs hosting a Jam: a shareable link, Copy link and guest permissions" },
+  { id: "queue", tab: "Queue", alt: "cloudrs queue side panel open over the Library" },
+];
 ---
 <section class="section section-wide" id="app" data-section="The app">
   <header class="section-head center reveal">
     <p class="label">The app</p>
     <h2>Quiet chrome.<br><span class="grad-text">Loud music.</span></h2>
-    <p class="muted">Warm neutrals step back so artwork and waveforms carry the color. These are real screenshots; the theme follows this page.</p>
+    <p class="muted">Warm neutrals step back so artwork and waveforms carry the color. Real screenshots of the 0.1 beta, with its own title bar.</p>
   </header>
 
   <div class="shot-tabs reveal" role="tablist" aria-label="Screens">
-    <button role="tab" aria-selected="true" data-shot="search-playing">Search</button>
-    <button role="tab" aria-selected="false" data-shot="track">Track</button>
-    <button role="tab" aria-selected="false" data-shot="playlist">Playlist</button>
-    <button role="tab" aria-selected="false" data-shot="user">Profile</button>
-    <button role="tab" aria-selected="false" data-shot="queue">Queue</button>
+    {SHOTS.map((s, i) => (
+      <button role="tab" aria-selected={i === 0 ? "true" : "false"} data-shot={s.id}>{s.tab}</button>
+    ))}
     <span class="tab-pill" aria-hidden="true"></span>
   </div>
 
   <div class="stage reveal">
     <div class="window" id="window">
-      <div class="window-bar">
-        <span class="dots"><i></i><i></i><i></i></span>
-        <span class="window-title mono">cloudrs</span>
-        <span class="window-meta mono">GPUI · 120 fps</span>
-      </div>
       <div class="window-screen" id="screen">
-        <img alt="cloudrs search results with a track playing" data-shot="search-playing" class="on">
-        <img alt="cloudrs track screen" data-shot="track">
-        <img alt="cloudrs playlist screen" data-shot="playlist">
-        <img alt="cloudrs profile screen" data-shot="user">
-        <img alt="cloudrs queue panel" data-shot="queue">
+        {SHOTS.map((s, i) => (
+          <img
+            alt={s.alt}
+            data-shot={s.id}
+            data-light={s.light ? "" : undefined}
+            class={i === 0 ? "on" : undefined}
+            src={i === 0 ? asset(`assets/shots/${s.id}-dark.webp`) : undefined}
+            width="1424"
+            height="892"
+            decoding="async"
+          />
+        ))}
       </div>
     </div>
     <div class="stage-shadow" aria-hidden="true"></div>

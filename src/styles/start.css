@@ -1,6 +1,9 @@
 /* cloudrs site: start. Tokens live in global.css. */
 
 /* ---------- terminal ---------- */
+.dots { display: flex; gap: 7px; }
+.dots i { width: 11px; height: 11px; border-radius: 50%; background: var(--surface-hover); }
+.dots i:first-child { background: var(--accent); }
 .split-start { align-items: start; }
 .terminal { border-radius: var(--r-xl); background: #0D0C0B; border: 1px solid rgba(255,236,220,.14); box-shadow: 0 40px 80px -40px rgba(0,0,0,.7); overflow: hidden; color: #F5EFE8; }
 .term-bar { display: flex; align-items: center; gap: 12px; height: 42px; padding: 0 8px 0 14px; border-bottom: 1px solid rgba(255,236,220,.08); color: #7D756C; font-size: 12px; }

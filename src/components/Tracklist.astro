@@ -1,5 +1,49 @@
 ---
 import "../styles/tracklist.css";
+
+// Side A: what cloudrs is about. `art` paints the generated cover; `notes` may hold inline HTML.
+const TRACKS = [
+  {
+    title: "Native, for real", artist: "Rust · GPUI · Zed's UI engine", badge: "GPU", dur: "02:14",
+    art: "--a:#FF3D00;--b:#FF9A1F;--r:20deg",
+    notes: "No browser inside. The window is drawn on the GPU with GPUI, the framework behind the Zed editor, under its own title bar with the logo. It opens instantly and answers every click at 120&nbsp;fps.",
+  },
+  {
+    title: "A Home that knows the scene", artist: "trending by genre · curated rows", badge: "Home", dur: "03:35",
+    art: "--a:#FF5500;--b:#3A1400;--r:160deg",
+    notes: "A greeting for the time of day, what is playing, quick tiles, trending tracks by genre, SoundCloud's own curated rows and charts. Sign in with your SoundCloud account and your playlists, feed, likes and artists join them.",
+  },
+  {
+    title: "Jam, listen together", artist: "a link · peer-to-peer · no server", badge: "New", isNew: true, dur: "05:20",
+    art: "--a:#FF4D5E;--b:#FF9A1F;--r:90deg",
+    notes: "Start a Jam, share the link, and friends on any network hear the same moment you do. Guests add tracks, and with your permission play, pause and skip. Only the state travels, peer to peer; there is no cloudrs server in the middle. <a href=\"#jam\">More below ↓</a>",
+  },
+  {
+    title: "Playlists of your own", artist: "cover · tags · drag to reorder", badge: "Create", dur: "04:06",
+    art: "--a:#FFC145;--b:#E84D00;--r:250deg",
+    notes: "Create playlists with a cover, a description, a genre and tags, public or private. Add from any track, drag to reorder, rename or delete. They live on your SoundCloud account, so they follow you everywhere.",
+  },
+  {
+    title: "The waveform is the seek bar", artist: "hover · preview · jump", badge: "Seek", dur: "03:47",
+    art: "--a:#B83C00;--b:#FFD9C2;--r:300deg",
+    notes: "Hover the waveform and the bars up to your pointer light up with where you'll land. Click to jump. (Try the player at the bottom of this page.)",
+  },
+  {
+    title: "Discord Rich Presence", artist: "listening to · cover · progress", badge: "Discord", dur: "01:31",
+    art: "--a:#FF8A52;--b:#141210;--r:200deg",
+    notes: "Your Discord status shows what you are listening to, with the cover, a progress bar and buttons to open the track.",
+  },
+  {
+    title: "A real queue", artist: "drag · play next · undo shuffle", badge: "Autoplay", dur: "05:01",
+    art: "--a:#FF9A1F;--b:#7A2A00;--r:45deg",
+    notes: "Drag to reorder, play next, shuffle that you can take back, repeat, and endless autoplay from related tracks. Close it mid-song: the queue, the position and the volume come back next time.",
+  },
+  {
+    title: "Keyboard first", artist: "Ctrl K · Alt ← → · paste a link", badge: "Keys", dur: "04:44",
+    art: "--a:#E84D00;--b:#FFF1E8;--r:120deg",
+    notes: "<kbd>Ctrl</kbd><kbd>K</kbd> or <kbd>/</kbd> to search, <kbd>Alt</kbd><kbd>←</kbd><kbd>→</kbd> to go back and forward, and paste any SoundCloud link or Jam invite into search to open it. The full set of shortcuts, <kbd>Space</kbd> included, comes with M4.",
+  },
+];
 ---
 <section class="section" id="tracklist" data-section="Features">
   <header class="section-head reveal">
@@ -9,101 +53,19 @@ import "../styles/tracklist.css";
   </header>
 
   <ol class="tracklist">
-    <li class="reveal"><details class="track">
-      <summary>
-        <span class="t-index"><span class="num">01</span><span class="eq"><i></i><i></i><i></i><i></i></span></span>
-        <span class="t-art" style="--a:#FF3D00;--b:#FF9A1F;--r:20deg"></span>
-        <span class="t-main"><span class="t-title">Native, for real</span><span class="t-artist">Rust · GPUI · Zed's UI engine</span></span>
-        <span class="t-badges"><span class="badge">GPU</span></span>
-        <span class="t-wave" aria-hidden="true"></span>
-        <span class="t-dur mono">02:14</span>
-      </summary>
-      <div class="t-notes"><p>No browser inside. The window is drawn on the GPU with GPUI, the framework behind the Zed editor, and the target is under 100&nbsp;MB of RAM while a track plays. It opens instantly and answers every click at 120&nbsp;fps.</p></div>
-    </details></li>
-
-    <li class="reveal" style="--d:1"><details class="track">
-      <summary>
-        <span class="t-index"><span class="num">02</span><span class="eq"><i></i><i></i><i></i><i></i></span></span>
-        <span class="t-art" style="--a:#FF5500;--b:#3A1400;--r:160deg"></span>
-        <span class="t-main"><span class="t-title">The waveform is the seek bar</span><span class="t-artist">hover · preview · jump</span></span>
-        <span class="t-badges"><span class="badge">Seek</span></span>
-        <span class="t-wave" aria-hidden="true"></span>
-        <span class="t-dur mono">03:35</span>
-      </summary>
-      <div class="t-notes"><p>Hover the waveform and the bars up to your pointer light up with a preview of where you'll land. Click to jump. Timed comments will be pinned along the track, right where they were written. (Try the player at the bottom of this page.)</p></div>
-    </details></li>
-
-    <li class="reveal" style="--d:2"><details class="track">
-      <summary>
-        <span class="t-index"><span class="num">03</span><span class="eq"><i></i><i></i><i></i><i></i></span></span>
-        <span class="t-art" style="--a:#FFC145;--b:#E84D00;--r:250deg"></span>
-        <span class="t-main"><span class="t-title">A real queue</span><span class="t-artist">drag · play next · undo shuffle</span></span>
-        <span class="t-badges"><span class="badge">Autoplay</span></span>
-        <span class="t-wave" aria-hidden="true"></span>
-        <span class="t-dur mono">04:06</span>
-      </summary>
-      <div class="t-notes"><p>Drag to reorder, play next, shuffle that you can take back, and endless autoplay from related tracks when the queue runs dry. The row you drag lifts with an accent outline so you always know where it'll drop.</p></div>
-    </details></li>
-
-    <li class="reveal" style="--d:3"><details class="track">
-      <summary>
-        <span class="t-index"><span class="num">04</span><span class="eq"><i></i><i></i><i></i><i></i></span></span>
-        <span class="t-art" style="--a:#FF4D5E;--b:#FF9A1F;--r:90deg"></span>
-        <span class="t-main"><span class="t-title">Jam, listen together</span><span class="t-artist">peer-to-peer · no server</span></span>
-        <span class="t-badges"><span class="badge badge-new">New</span></span>
-        <span class="t-wave" aria-hidden="true"></span>
-        <span class="t-dur mono">05:20</span>
-      </summary>
-      <div class="t-notes"><p>Start a Jam, share a link, and friends hear the same second you do. Only the state travels, over iroh, directly between you. The audio never leaves SoundCloud, and there is no cloudrs server in the middle. <a href="#jam">More below ↓</a></p></div>
-    </details></li>
-
-    <li class="reveal" style="--d:4"><details class="track">
-      <summary>
-        <span class="t-index"><span class="num">05</span><span class="eq"><i></i><i></i><i></i><i></i></span></span>
-        <span class="t-art" style="--a:#B83C00;--b:#FFD9C2;--r:300deg"></span>
-        <span class="t-main"><span class="t-title">Part of your desktop</span><span class="t-artist">MPRIS · Now Playing · SMTC</span></span>
-        <span class="t-badges"><span class="badge">Soon</span></span>
-        <span class="t-wave" aria-hidden="true"></span>
-        <span class="t-dur mono">03:47</span>
-      </summary>
-      <div class="t-notes"><p>Media keys and system controls on every OS: MPRIS on Linux, Now Playing on macOS, SMTC on Windows. Your keyboard's play key just works.</p></div>
-    </details></li>
-
-    <li class="reveal" style="--d:5"><details class="track">
-      <summary>
-        <span class="t-index"><span class="num">06</span><span class="eq"><i></i><i></i><i></i><i></i></span></span>
-        <span class="t-art" style="--a:#FF8A52;--b:#141210;--r:200deg"></span>
-        <span class="t-main"><span class="t-title">Keyboard first</span><span class="t-artist">Ctrl K · Space · paste a link</span></span>
-        <span class="t-badges"><span class="badge">Keys</span></span>
-        <span class="t-wave" aria-hidden="true"></span>
-        <span class="t-dur mono">01:31</span>
-      </summary>
-      <div class="t-notes"><p><kbd>Ctrl</kbd><kbd>K</kbd> to search, <kbd>Space</kbd> to play, and paste any SoundCloud link anywhere in the window to play it right away.</p></div>
-    </details></li>
-
-    <li class="reveal" style="--d:6"><details class="track">
-      <summary>
-        <span class="t-index"><span class="num">07</span><span class="eq"><i></i><i></i><i></i><i></i></span></span>
-        <span class="t-art" style="--a:#FF9A1F;--b:#7A2A00;--r:45deg"></span>
-        <span class="t-main"><span class="t-title">Your library</span><span class="t-artist">likes · playlists · feed · following</span></span>
-        <span class="t-badges"><span class="badge">Sign in</span></span>
-        <span class="t-wave" aria-hidden="true"></span>
-        <span class="t-dur mono">05:01</span>
-      </summary>
-      <div class="t-notes"><p>Sign in through SoundCloud's own web sign-in, and your likes, playlists, feed and followings are there. The token lives in your OS keychain, never in plain text.</p></div>
-    </details></li>
-
-    <li class="reveal" style="--d:7"><details class="track">
-      <summary>
-        <span class="t-index"><span class="num">08</span><span class="eq"><i></i><i></i><i></i><i></i></span></span>
-        <span class="t-art" style="--a:#E84D00;--b:#FFF1E8;--r:120deg"></span>
-        <span class="t-main"><span class="t-title">Remembers where you were</span><span class="t-artist">queue · position · volume</span></span>
-        <span class="t-badges"><span class="badge">Restore</span></span>
-        <span class="t-wave" aria-hidden="true"></span>
-        <span class="t-dur mono">04:44</span>
-      </summary>
-      <div class="t-notes"><p>Close it mid-song. Open it tomorrow. The queue, the position and the volume come back, paused, right where you left them.</p></div>
-    </details></li>
+    {TRACKS.map((t, i) => (
+      <li class="reveal" style={`--d:${i}`}><details class="track">
+        <summary>
+          <span class="t-index"><span class="num">{String(i + 1).padStart(2, "0")}</span><span class="eq"><i></i><i></i><i></i><i></i></span></span>
+          <span class="t-art" style={t.art}></span>
+          <span class="t-main"><span class="t-title">{t.title}</span><span class="t-artist">{t.artist}</span></span>
+          <span class="t-badges"><span class={t.isNew ? "badge badge-new" : "badge"}>{t.badge}</span></span>
+          <span class="t-wave" aria-hidden="true"></span>
+          <span class="t-dur mono">{t.dur}</span>
+        </summary>
+        <div class="t-notes"><p set:html={t.notes} /></div>
+      </details></li>
+    ))}
   </ol>
 </section>
 

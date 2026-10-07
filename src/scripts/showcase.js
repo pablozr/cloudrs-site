@@ -8,7 +8,9 @@ const shotImgs = $$("#screen img");
 function loadShots() {
   const theme = root.dataset.theme === "light" ? "light" : "dark";
   shotImgs.forEach((img) => {
-    const src = asset(`assets/shots/${img.dataset.shot}-${theme}.png`);
+    // Screens without a light capture stay dark in the light theme.
+    const t = theme === "light" && img.dataset.light !== undefined ? "light" : "dark";
+    const src = asset(`assets/shots/${img.dataset.shot}-${t}.webp`);
     if (img.classList.contains("on") || img.dataset.loaded) { img.src = src; img.dataset.loaded = "1"; }
     else img.dataset.pending = src;
   });

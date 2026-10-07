@@ -30,14 +30,9 @@
   transition: transform .2s linear;
   will-change: transform;
 }
-.window-bar { display: flex; align-items: center; gap: 12px; height: 38px; padding: 0 14px; background: var(--canvas-deep); border-bottom: 1px solid var(--line); font-size: 12px; color: var(--text-subtle); }
-.dots { display: flex; gap: 7px; }
-.dots i { width: 11px; height: 11px; border-radius: 50%; background: var(--surface-hover); }
-.dots i:first-child { background: var(--accent); }
-.window-title { flex: 1; text-align: center; }
 /* Where the app window sits inside each screenshot file (pixels). */
 .window-screen {
-  --shot-w: 1280; --win-x: 92; --win-y: 40; --win-w: 1100; --win-h: 720;
+  --shot-w: 1424; --win-x: 0; --win-y: 0; --win-w: 1424; --win-h: 892;
   position: relative; aspect-ratio: var(--win-w) / var(--win-h); overflow: hidden; background: var(--canvas);
 }
 .window-screen img {
