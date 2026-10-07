@@ -1,0 +1,40 @@
+---
+import { asset } from "../lib/url.js";
+import "../styles/player.css";
+---
+<div class="player" id="player" role="region" aria-label="Page player">
+  <div class="p-left">
+    <div class="p-art" aria-hidden="true"><img src={asset("assets/logo.svg")} alt=""></div>
+    <div class="p-meta">
+      <p class="p-title" id="p-title">Intro</p>
+      <p class="p-artist">cloudrs · live mix</p>
+    </div>
+  </div>
+  <div class="p-center">
+    <div class="p-transport">
+      <button class="icon-btn" id="p-prev" aria-label="Previous section" data-tip="Previous section"><svg class="ic"><use href="#i-prev"/></svg></button>
+      <button class="play-btn" id="p-play" aria-label="Play the live mix" data-tip="Play (Space)">
+        <svg class="ic ic-play"><use href="#i-play"/></svg><svg class="ic ic-pause"><use href="#i-pause"/></svg>
+      </button>
+      <button class="icon-btn" id="p-next" aria-label="Next section" data-tip="Next section"><svg class="ic"><use href="#i-next"/></svg></button>
+    </div>
+    <div class="p-seek">
+      <span class="mono p-time" id="p-elapsed">00:00</span>
+      <div class="p-wave" id="p-wave" role="slider" tabindex="0" aria-label="Page position" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <canvas id="wave"></canvas>
+        <div class="pins" id="pins"></div>
+      </div>
+      <span class="mono p-time" id="p-total">04:20</span>
+    </div>
+  </div>
+  <div class="p-right">
+    <button class="icon-btn" id="p-mute" aria-label="Mute" data-tip="Mute">
+      <svg class="ic ic-vol"><use href="#i-vol"/></svg><svg class="ic ic-volx"><use href="#i-volx"/></svg>
+    </button>
+    <input type="range" class="slider" id="p-volume" min="0" max="100" value="70" aria-label="Volume">
+  </div>
+</div>
+
+<script>
+  import "../scripts/player.js";
+</script>

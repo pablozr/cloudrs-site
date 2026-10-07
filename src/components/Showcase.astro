@@ -1,0 +1,41 @@
+---
+import "../styles/showcase.css";
+---
+<section class="section section-wide" id="app" data-section="The app">
+  <header class="section-head center reveal">
+    <p class="label">The app</p>
+    <h2>Quiet chrome.<br><span class="grad-text">Loud music.</span></h2>
+    <p class="muted">Warm neutrals step back so artwork and waveforms carry the color. These are real screenshots; the theme follows this page.</p>
+  </header>
+
+  <div class="shot-tabs reveal" role="tablist" aria-label="Screens">
+    <button role="tab" aria-selected="true" data-shot="search-playing">Search</button>
+    <button role="tab" aria-selected="false" data-shot="track">Track</button>
+    <button role="tab" aria-selected="false" data-shot="playlist">Playlist</button>
+    <button role="tab" aria-selected="false" data-shot="user">Profile</button>
+    <button role="tab" aria-selected="false" data-shot="queue">Queue</button>
+    <span class="tab-pill" aria-hidden="true"></span>
+  </div>
+
+  <div class="stage reveal">
+    <div class="window" id="window">
+      <div class="window-bar">
+        <span class="dots"><i></i><i></i><i></i></span>
+        <span class="window-title mono">cloudrs</span>
+        <span class="window-meta mono">GPUI · 120 fps</span>
+      </div>
+      <div class="window-screen" id="screen">
+        <img alt="cloudrs search results with a track playing" data-shot="search-playing" class="on">
+        <img alt="cloudrs track screen" data-shot="track">
+        <img alt="cloudrs playlist screen" data-shot="playlist">
+        <img alt="cloudrs profile screen" data-shot="user">
+        <img alt="cloudrs queue panel" data-shot="queue">
+      </div>
+    </div>
+    <div class="stage-shadow" aria-hidden="true"></div>
+  </div>
+</section>
+
+<script>
+  import "../scripts/showcase.js";
+</script>

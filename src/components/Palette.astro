@@ -1,0 +1,17 @@
+---
+---
+<div class="palette" id="palette" hidden>
+  <div class="palette-scrim" data-close></div>
+  <div class="palette-box" role="dialog" aria-modal="true" aria-label="Command palette">
+    <div class="palette-field">
+      <svg class="ic"><use href="#i-search"/></svg>
+      <input id="palette-input" type="text" placeholder="Jump to a section or run an action…" aria-label="Search sections and actions" autocomplete="off" spellcheck="false">
+      <kbd>Esc</kbd>
+    </div>
+    <ul class="palette-list" id="palette-list" role="listbox" aria-label="Results"></ul>
+  </div>
+</div>
+
+<script>
+  import "../scripts/palette.js";
+</script>

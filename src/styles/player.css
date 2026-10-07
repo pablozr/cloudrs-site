@@ -1,0 +1,80 @@
+/* cloudrs site: player. Tokens live in global.css. */
+
+/* ---------- player ---------- */
+.player {
+  position: fixed; z-index: 60; left: 50%; bottom: 14px;
+  width: min(1180px, calc(100% - 2 * var(--gutter)));
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.4fr) minmax(0, 1fr); align-items: center; gap: 20px;
+  padding: 10px 16px 10px 10px;
+  border-radius: 22px;
+  background: var(--glass);
+  border: 1px solid var(--line-strong);
+  backdrop-filter: blur(22px) saturate(1.5); -webkit-backdrop-filter: blur(22px) saturate(1.5);
+  box-shadow: 0 24px 60px -24px rgba(0,0,0,.6);
+  transform: translate(-50%, 140%);
+  transition: transform .7s var(--ease-out);
+}
+.player.shown { transform: translate(-50%, 0); }
+.p-left { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.p-art { width: 52px; height: 52px; flex: none; border-radius: var(--r-m); background: var(--canvas-deep); display: grid; place-items: center; overflow: hidden; border: 1px solid var(--line); }
+.p-art img { width: 40px; height: 40px; animation: spin 6s linear infinite paused; }
+body.playing .p-art img { animation-play-state: running; }
+.p-meta { min-width: 0; }
+.p-meta p { margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.p-title { font-weight: 600; font-size: 14px; }
+.p-artist { font-size: 13px; color: var(--text-muted); }
+.p-center { display: grid; gap: 4px; }
+.p-transport { display: flex; align-items: center; justify-content: center; gap: 14px; }
+.play-btn {
+  width: 42px; height: 42px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--accent-grad); color: #fff;
+  box-shadow: 0 6px 20px -4px var(--accent-glow);
+  transition: transform var(--base) var(--ease-spring), box-shadow var(--base);
+}
+.play-btn:hover { transform: scale(1.06); }
+.play-btn:active { transform: scale(.9); }
+.play-btn .ic { width: 20px; height: 20px; }
+.play-btn .ic-play { margin-left: 2px; }
+.ic-pause { display: none; }
+body.playing .play-btn .ic-play { display: none; }
+body.playing .play-btn .ic-pause { display: block; }
+.p-seek { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; }
+.p-time { font-size: 12px; color: var(--text-subtle); }
+.p-wave { position: relative; height: 34px; cursor: pointer; border-radius: 4px; }
+.p-wave canvas { width: 100%; height: 100%; display: block; }
+.pins { position: absolute; inset: 0; pointer-events: none; }
+.pin {
+  position: absolute; top: -7px; width: 10px; height: 10px; margin-left: -5px;
+  border-radius: 50%; pointer-events: auto;
+  background: var(--surface-raised); border: 2px solid var(--text-subtle);
+  transition: transform var(--base) var(--ease-spring), border-color var(--fast), background-color var(--fast);
+}
+.pin:hover, .pin.passed { border-color: var(--accent); }
+.pin.passed { background: var(--accent); }
+.pin:hover { transform: scale(1.35); }
+.pin[data-tip]::after { bottom: calc(100% + 10px); }
+.p-right { display: flex; align-items: center; justify-content: flex-end; gap: 6px; }
+.ic-volx { display: none; }
+.muted-audio .ic-vol { display: none; }
+.muted-audio .ic-volx { display: block; }
+.slider { -webkit-appearance: none; appearance: none; width: 110px; height: 4px; border-radius: 4px; background: linear-gradient(90deg, var(--accent) 0 var(--v, 70%), var(--surface-hover) var(--v, 70%)); outline-offset: 6px; cursor: pointer; }
+.slider::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; border-radius: 50%; background: var(--text); border: 0; transition: transform var(--base) var(--ease-spring); }
+.slider::-webkit-slider-thumb:hover { transform: scale(1.25); }
+.slider::-moz-range-thumb { width: 14px; height: 14px; border-radius: 50%; background: var(--text); border: 0; }
+
+
+@media (max-width: 860px) {
+  .player { grid-template-columns: minmax(0, 1fr) auto; gap: 12px; padding: 8px 12px 8px 8px; }
+  .p-right { display: none; }
+  .p-center { display: contents; }
+  .p-transport { grid-column: 2; grid-row: 1; gap: 4px; }
+  .p-seek { grid-column: 1 / -1; grid-row: 2; }
+}
+
+@media (max-width: 560px) {
+  .p-left .p-art { width: 40px; height: 40px; }
+  .p-art img { width: 30px; height: 30px; }
+  .player { bottom: 10px; border-radius: 18px; }
+  .p-transport .icon-btn { display: none; }
+}

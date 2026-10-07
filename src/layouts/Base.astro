@@ -1,0 +1,60 @@
+---
+import "../styles/global.css";
+import Icons from "../components/Icons.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import Palette from "../components/Palette.astro";
+import Toast from "../components/Toast.astro";
+import { asset } from "../lib/url.js";
+import { buildRelease } from "../lib/release.server.js";
+import bricolage from "../fonts/BricolageGrotesque-Variable.ttf?url";
+import geist from "../fonts/Geist-Variable.ttf?url";
+
+interface Props { title: string; description: string }
+const { title, description } = Astro.props;
+
+// Baked in at build time; the browser refreshes it (see scripts/download.js).
+const release = await buildRelease();
+const releaseJson = JSON.stringify(release).replace(/</g, "\\u003c");
+---
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <meta name="theme-color" content="#0D0C0B">
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:image" content={asset("assets/banner.png")}>
+  <link rel="icon" href={asset("assets/logo.svg")} type="image/svg+xml">
+  <link rel="preload" href={bricolage} as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href={geist} as="font" type="font/ttf" crossorigin>
+  <noscript><style>.reveal { opacity: 1; transform: none; filter: none; } .display .line > span { transform: none; }</style></noscript>
+  <script is:inline>
+    try {
+      var t = localStorage.getItem("cloudrs-theme");
+      if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <Icons />
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
+  <Nav />
+  <main>
+    <slot />
+  </main>
+  <Footer />
+  <slot name="after" />
+  <Palette />
+  <Toast />
+  <script type="application/json" id="release-data" set:html={releaseJson}></script>
+  <script>
+    import "../scripts/effects.js";
+    import "../scripts/download.js";
+  </script>
+</body>
+</html>

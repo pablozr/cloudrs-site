@@ -1,0 +1,44 @@
+---
+import "../styles/start.css";
+import { page } from "../lib/url.js";
+interface Props { id?: string; section?: string; download?: boolean }
+const { id = "start", section = "Get started", download = true } = Astro.props;
+---
+<section class="section" id={id} data-section={section}>
+  <div class="split split-start">
+    <header class="section-head reveal">
+      <p class="label">{download ? "Get started" : "From source"}</p>
+      {download
+        ? <h2>Install it,<br>or build it.</h2>
+        : <h2>Three commands<br>to your first track.</h2>}
+      {download && (
+        <div class="cta-row start-cta">
+          <a class="btn btn-primary magnetic" href={page("download")} data-download-cta>
+            <svg class="ic"><use href="#i-download"/></svg><span>Download</span>
+          </a>
+          <a class="btn btn-secondary" href={page("download")}><span>All platforms</span><svg class="ic"><use href="#i-arrow"/></svg></a>
+        </div>
+      )}
+      <p class="muted">{download ? "Or build it yourself: " : ""}Stable Rust is all you need. On Linux, install the audio and windowing packages listed in the <a href="https://github.com/pablozr/cloudrs#getting-started" target="_blank" rel="noopener">README</a> first.</p>
+    </header>
+    <div class="terminal reveal" style="--d:1">
+      <div class="term-bar">
+        <span class="dots"><i></i><i></i><i></i></span>
+        <span class="mono">~/code</span>
+        <button class="icon-btn icon-btn-sm" id="copy-cmd" aria-label="Copy the commands" data-tip="Copy">
+          <svg class="ic ic-copy"><use href="#i-copy"/></svg><svg class="ic ic-check"><use href="#i-check"/></svg>
+        </button>
+      </div>
+      <pre class="term-body mono" id="term"><code><span class="c"># clone it</span>
+<span class="p">$</span> git clone https://github.com/pablozr/cloudrs
+<span class="p">$</span> cd cloudrs
+
+<span class="c"># run the desktop app</span>
+<span class="p">$</span> cargo run -p cloudrs<span class="caret"></span></code></pre>
+    </div>
+  </div>
+</section>
+
+<script>
+  import "../scripts/start.js";
+</script>

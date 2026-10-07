@@ -1,0 +1,76 @@
+---
+import "../styles/rack.css";
+---
+<section class="section section-wide" id="signal" data-section="Architecture">
+  <header class="section-head center reveal">
+    <p class="label">Architecture</p>
+    <h2>A clean signal chain.</h2>
+    <p class="muted">A Rust workspace patched like a modular rack: every crate is one module with one job, cables only run one way, and the tests fail if anyone patches around them.</p>
+  </header>
+
+  <div class="rack reveal" id="rack">
+    <svg class="cables" id="cables" aria-hidden="true"></svg>
+    <div class="module m-app" data-id="app">
+      <span class="screw"></span><span class="screw"></span>
+      <div class="m-head"><span class="led"></span><span class="m-name mono">apps/cloudrs</span></div>
+      <p class="m-role">Desktop app</p>
+      <p class="m-desc">Screens, i18n, composition root</p>
+      <div class="knobs"><span class="knob"></span><span class="knob"></span></div>
+      <span class="jack out" data-jack="app"></span>
+    </div>
+    <div class="module m-ui" data-id="ui">
+      <span class="screw"></span><span class="screw"></span>
+      <span class="jack in" data-jack="ui"></span>
+      <div class="m-head"><span class="led"></span><span class="m-name mono">cloudrs-ui</span></div>
+      <p class="m-role">Design system</p>
+      <p class="m-desc">Tokens, theme, motion, primitives</p>
+      <div class="knobs"><span class="knob"></span></div>
+    </div>
+    <div class="module m-core" data-id="core">
+      <span class="screw"></span><span class="screw"></span>
+      <span class="jack in" data-jack="core"></span>
+      <div class="m-head"><span class="led"></span><span class="m-name mono">sc-core</span></div>
+      <p class="m-role">State &amp; commands</p>
+      <p class="m-desc">Queue, events, persistence, cache</p>
+      <div class="knobs"><span class="knob"></span><span class="knob"></span><span class="knob"></span></div>
+      <span class="jack out" data-jack="core-out"></span>
+    </div>
+    <div class="module m-platform" data-id="platform">
+      <span class="screw"></span><span class="screw"></span>
+      <span class="jack in" data-jack="platform"></span>
+      <div class="m-head"><span class="led"></span><span class="m-name mono">sc-platform</span></div>
+      <p class="m-role">OS integration</p>
+      <p class="m-desc">Keychain, sign-in, media keys</p>
+      <div class="knobs"><span class="knob"></span></div>
+    </div>
+    <div class="module m-api" data-id="api">
+      <span class="screw"></span><span class="screw"></span>
+      <span class="jack in" data-jack="api"></span>
+      <div class="m-head"><span class="led"></span><span class="m-name mono">sc-api</span></div>
+      <p class="m-role">SoundCloud client</p>
+      <p class="m-desc">Models, auth, pagination</p>
+      <div class="knobs"><span class="knob"></span></div>
+    </div>
+    <div class="module m-audio" data-id="audio">
+      <span class="screw"></span><span class="screw"></span>
+      <span class="jack in" data-jack="audio"></span>
+      <div class="m-head"><span class="led"></span><span class="m-name mono">sc-audio</span></div>
+      <p class="m-role">Audio engine</p>
+      <p class="m-desc">HLS → symphonia → cpal</p>
+      <div class="knobs"><span class="knob"></span><span class="knob"></span></div>
+    </div>
+    <div class="module m-session" data-id="session">
+      <span class="screw"></span><span class="screw"></span>
+      <span class="jack in" data-jack="session"></span>
+      <div class="m-head"><span class="led"></span><span class="m-name mono">sc-session</span></div>
+      <p class="m-role">Jam peer-to-peer</p>
+      <p class="m-desc">iroh, protocol v1</p>
+      <div class="knobs"><span class="knob"></span></div>
+    </div>
+  </div>
+  <p class="rack-note mono reveal"><span class="no-patch"></span> sc-api and sc-audio never talk to each other · audio never waits on the UI or the network</p>
+</section>
+
+<script>
+  import "../scripts/rack.js";
+</script>

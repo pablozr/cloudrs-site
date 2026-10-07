@@ -1,0 +1,20 @@
+/* cloudrs site: numbers. Tokens live in global.css. */
+
+/* ---------- numbers ---------- */
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); border-radius: var(--r-xl); overflow: hidden; background: var(--line); gap: 1px; }
+.stat { background: var(--canvas-deep); padding: 36px 28px 30px; position: relative; overflow: hidden; }
+.stat::before { content: ""; position: absolute; inset: auto -30% -70% -30%; height: 100%; background: radial-gradient(ellipse at center, var(--accent-soft), transparent 60%); opacity: 0; transition: opacity var(--slow); }
+.stat:hover::before { opacity: 1; }
+.stat-num { margin: 0; font: 500 clamp(48px, 6vw, 80px)/1 var(--f-mono); letter-spacing: -.05em; display: flex; align-items: baseline; gap: 4px; }
+.stat-num .pre { color: var(--text-subtle); font-size: .6em; }
+.stat-num .unit { font-size: .3em; letter-spacing: 0; color: var(--accent); margin-left: 4px; font-weight: 600; }
+.stat-label { margin: 16px 0 0; color: var(--text-muted); font-size: 14px; position: relative; }
+
+
+@media (max-width: 1080px) {
+  .stats { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .stats { grid-template-columns: 1fr; }
+}

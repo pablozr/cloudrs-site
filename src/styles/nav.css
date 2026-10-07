@@ -1,0 +1,48 @@
+/* cloudrs site: nav. Tokens live in global.css. */
+
+/* ---------- nav ---------- */
+.nav {
+  position: fixed; top: 14px; left: 50%; z-index: 50;
+  transform: translateX(-50%);
+  width: min(var(--maxw), calc(100% - 2 * var(--gutter)));
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 8px 8px 8px 16px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition: background-color var(--slow) var(--ease-out), border-color var(--slow) var(--ease-out), backdrop-filter var(--slow), box-shadow var(--slow);
+}
+.nav.scrolled {
+  background: var(--glass);
+  border-color: var(--line);
+  backdrop-filter: blur(18px) saturate(1.4); -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  box-shadow: 0 10px 40px -20px rgba(0,0,0,.5);
+}
+.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+.brand-logo { transition: transform .8s var(--ease-out); }
+.brand:hover .brand-logo { transform: rotate(180deg); }
+.wordmark { font: 800 22px/1 var(--f-display); letter-spacing: -.045em; }
+.wordmark span { color: var(--accent); }
+.nav-links { display: flex; gap: 4px; }
+.nav-links a {
+  text-decoration: none; color: var(--text-muted);
+  font-size: 14px; padding: 8px 12px; border-radius: 999px;
+  transition: color var(--fast) var(--ease-std), background-color var(--fast) var(--ease-std);
+}
+.nav-links a:hover, .nav-links a.active { color: var(--text); background: var(--surface-hover); }
+.nav-actions { display: flex; align-items: center; gap: 6px; }
+.kbd-btn { display: inline-flex; align-items: center; padding: 6px 8px; border-radius: 999px; transition: background-color var(--fast); }
+.kbd-btn:hover { background: var(--surface-hover); }
+.ic-moon { display: none; }
+:root[data-theme="light"] .ic-sun { display: none; }
+:root[data-theme="light"] .ic-moon { display: block; }
+
+
+@media (max-width: 1080px) {
+  .nav-links { display: none; }
+}
+
+@media (max-width: 560px) {
+  .nav { padding-left: 12px; }
+  .kbd-btn, .nav-actions .btn span { display: none; }
+  .nav-actions .btn { padding: 0 10px; }
+}

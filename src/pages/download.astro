@@ -1,0 +1,61 @@
+---
+import Base from "../layouts/Base.astro";
+import Start from "../components/Start.astro";
+import { asset } from "../lib/url.js";
+import { renderDownloads } from "../lib/release.js";
+import { buildRelease } from "../lib/release.server.js";
+import "../styles/download.css";
+
+const release = await buildRelease();
+---
+<Base
+  title="Download cloudrs"
+  description="Download cloudrs, the native, open source SoundCloud client, for Windows, macOS and Linux."
+>
+  <section class="dl-hero" id="download" data-section="Download">
+    <div class="dl-glow" aria-hidden="true"></div>
+    <img class="dl-logo reveal" src={asset("assets/logo.svg")} alt="" width="120" height="120">
+    <p class="label reveal" style="--d:1">Download</p>
+    <h1 class="dl-title reveal" style="--d:2">Get <span class="grad-text">cloudrs</span>.</h1>
+    <p class="lede reveal" style="--d:3">Free and open source. Native on Windows, macOS and Linux, in about 11&nbsp;MB.</p>
+    <div class="cta-row reveal" style="--d:4">
+      <a class="btn btn-primary magnetic" id="dl-primary" href="#platforms" download hidden>
+        <svg class="ic"><use href="#i-download"/></svg><span>Download</span>
+      </a>
+      <a class="btn btn-secondary" href="#platforms"><span>All platforms</span><svg class="ic"><use href="#i-arrow"/></svg></a>
+    </div>
+    <p class="dl-note mono" id="dl-primary-note"></p>
+  </section>
+
+  <section class="section" id="platforms" data-section="Platforms">
+    <div id="dl-list" set:html={renderDownloads(release)}></div>
+  </section>
+
+  <section class="section" id="first-launch" data-section="First launch">
+    <header class="section-head reveal">
+      <p class="label">First launch</p>
+      <h2>Not signed yet,<br>so your system asks.</h2>
+      <p class="muted">This beta is not code-signed; signing comes with 0.1. Your system warns once, the first time you open it.</p>
+    </header>
+    <div class="launch">
+      <article class="launch-card reveal">
+        <header><svg class="ic"><use href="#i-windows"/></svg><h3>Windows</h3></header>
+        <p>SmartScreen says <q>Windows protected your PC</q>. Choose <b>More info</b>, then <b>Run anyway</b>. The installer sets cloudrs up for your user, with a Start menu shortcut and an uninstaller.</p>
+      </article>
+      <article class="launch-card reveal" style="--d:1">
+        <header><svg class="ic"><use href="#i-apple"/></svg><h3>macOS</h3></header>
+        <p>Drag cloudrs to Applications. Gatekeeper stops apps from unidentified developers: right-click cloudrs, choose <b>Open</b>, then <b>Open</b> again. Or allow it in <b>System Settings → Privacy &amp; Security</b>.</p>
+      </article>
+      <article class="launch-card reveal" style="--d:2">
+        <header><svg class="ic"><use href="#i-linux"/></svg><h3>Linux</h3></header>
+        <p>Make the AppImage executable and run it:</p>
+        <pre class="mono">chmod +x cloudrs_*.AppImage
+./cloudrs_*.AppImage</pre>
+        <p>Or install the package:</p>
+        <pre class="mono">sudo apt install ./cloudrs_*.deb</pre>
+      </article>
+    </div>
+  </section>
+
+  <Start id="source" section="From source" download={false} />
+</Base>

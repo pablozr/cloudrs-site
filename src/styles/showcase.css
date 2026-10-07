@@ -1,0 +1,56 @@
+/* cloudrs site: showcase. Tokens live in global.css. */
+
+/* ---------- showcase ---------- */
+.section-wide { width: min(1320px, calc(100% - 2 * var(--gutter))); }
+.shot-tabs {
+  position: relative; display: flex; width: max-content; max-width: 100%; margin: 0 auto 40px;
+  padding: 5px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line);
+  overflow-x: auto; scrollbar-width: none;
+}
+.shot-tabs button {
+  position: relative; z-index: 1; padding: 9px 18px; border-radius: 999px;
+  font-size: 14px; font-weight: 600; color: var(--text-muted);
+  transition: color var(--base) var(--ease-std); white-space: nowrap;
+}
+.shot-tabs button[aria-selected="true"] { color: var(--canvas); }
+.tab-pill {
+  position: absolute; top: 5px; bottom: 5px; left: 0; width: 0; border-radius: 999px;
+  background: var(--text);
+  transition: transform var(--slow) var(--ease-spring), width var(--slow) var(--ease-spring);
+}
+.stage { position: relative; perspective: 1800px; }
+.window {
+  position: relative; z-index: 1;
+  border-radius: var(--r-xl); overflow: hidden;
+  background: var(--canvas-deep);
+  border: 1px solid var(--line-strong);
+  box-shadow: 0 50px 120px -40px rgba(0,0,0,.65), 0 0 0 1px rgba(0,0,0,.2);
+  transform: rotateX(var(--rx, 18deg)) scale(var(--sc, .92));
+  transform-origin: 50% 100%;
+  transition: transform .2s linear;
+  will-change: transform;
+}
+.window-bar { display: flex; align-items: center; gap: 12px; height: 38px; padding: 0 14px; background: var(--canvas-deep); border-bottom: 1px solid var(--line); font-size: 12px; color: var(--text-subtle); }
+.dots { display: flex; gap: 7px; }
+.dots i { width: 11px; height: 11px; border-radius: 50%; background: var(--surface-hover); }
+.dots i:first-child { background: var(--accent); }
+.window-title { flex: 1; text-align: center; }
+/* Where the app window sits inside each screenshot file (pixels). */
+.window-screen {
+  --shot-w: 1280; --win-x: 92; --win-y: 40; --win-w: 1100; --win-h: 720;
+  position: relative; aspect-ratio: var(--win-w) / var(--win-h); overflow: hidden; background: var(--canvas);
+}
+.window-screen img {
+  position: absolute; max-width: none;
+  width: calc(var(--shot-w) / var(--win-w) * 100%);
+  left: calc(var(--win-x) / var(--win-w) * -100%);
+  top: calc(var(--win-y) / var(--win-h) * -100%);
+  opacity: 0; transform: scale(1.03); filter: blur(6px);
+  transition: opacity var(--page) var(--ease-out), transform var(--page) var(--ease-out), filter var(--page) var(--ease-out);
+}
+.window-screen img.on { opacity: 1; transform: none; filter: none; }
+.stage-shadow {
+  position: absolute; left: 10%; right: 10%; bottom: -60px; height: 140px; z-index: 0;
+  background: radial-gradient(ellipse at center, var(--accent-glow), transparent 70%);
+  filter: blur(30px); opacity: .7;
+}

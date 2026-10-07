@@ -1,0 +1,67 @@
+/* cloudrs site: tracklist. Tokens live in global.css. */
+
+/* ---------- tracklist ---------- */
+.tracklist { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.tracklist > li { border-bottom: 1px solid var(--line); }
+.track summary {
+  list-style: none; cursor: pointer;
+  display: grid; grid-template-columns: 44px 52px minmax(0, 1fr) auto 160px 56px; align-items: center; gap: 16px;
+  padding: 14px 12px; border-radius: var(--r-m);
+  transition: background-color var(--fast) var(--ease-std);
+}
+.track summary::-webkit-details-marker { display: none; }
+.track summary:hover, .track[open] summary { background: var(--surface); }
+.t-index { position: relative; height: 20px; display: grid; place-items: center; }
+.t-index .num { font: 400 14px/1 var(--f-mono); color: var(--text-subtle); transition: opacity var(--fast); }
+.eq { position: absolute; inset: 0; display: flex; align-items: flex-end; justify-content: center; gap: 2px; opacity: 0; transition: opacity var(--fast); }
+.eq i { width: 3px; height: 100%; border-radius: 1px; background: var(--accent); transform-origin: bottom; animation: eq .9s ease-in-out infinite alternate; }
+.eq i:nth-child(2) { animation-duration: .7s; animation-delay: -.3s; }
+.eq i:nth-child(3) { animation-duration: 1.1s; animation-delay: -.6s; }
+.eq i:nth-child(4) { animation-duration: .8s; animation-delay: -.15s; }
+@keyframes eq { 0% { transform: scaleY(.2); } 100% { transform: scaleY(1); } }
+.track summary:hover .num, .track[open] .num { opacity: 0; }
+.track summary:hover .eq, .track[open] .eq { opacity: 1; }
+.t-art {
+  width: 52px; height: 52px; border-radius: var(--r-m);
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255,255,255,.35), transparent 40%),
+    repeating-conic-gradient(from var(--r), var(--a) 0 12deg, var(--b) 12deg 24deg),
+    var(--a);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.08);
+  transition: transform var(--slow) var(--ease-spring), border-radius var(--slow) var(--ease-out);
+  animation: spin 18s linear infinite paused;
+}
+.track summary:hover .t-art { transform: scale(1.08) rotate(-4deg); border-radius: 50%; animation-play-state: running; }
+@keyframes spin { to { rotate: 360deg; } }
+.t-main { display: grid; min-width: 0; }
+.t-title { font: 700 clamp(17px, 1.7vw, 22px)/1.25 var(--f-display); letter-spacing: -.02em; transition: color var(--fast); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.t-artist { color: var(--text-muted); font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.track summary:hover .t-title, .track[open] .t-title { color: var(--accent); }
+.t-wave {
+  height: 28px;
+  background:
+    linear-gradient(90deg, var(--accent) 0 var(--p, 0%), var(--text-subtle) var(--p, 0%));
+  -webkit-mask: var(--wave-mask) center / 100% 100% no-repeat; mask: var(--wave-mask) center / 100% 100% no-repeat;
+  opacity: .55;
+  transition: opacity var(--base);
+}
+.track summary:hover .t-wave, .track[open] .t-wave { opacity: 1; }
+.t-dur { color: var(--text-subtle); font-size: 13px; text-align: right; }
+.t-notes { padding: 4px 12px 26px calc(44px + 52px + 32px + 12px); max-width: 860px; }
+.t-notes p { margin: 0; color: var(--text-muted); font-size: 16px; }
+.track[open] .t-notes { animation: notes .5s var(--ease-out); }
+@keyframes notes { from { opacity: 0; transform: translateY(-8px); } }
+
+
+@media (max-width: 1080px) {
+  .track summary { grid-template-columns: 36px 48px minmax(0, 1fr) auto 56px; }
+  .t-wave { display: none; }
+  .t-notes { padding-left: calc(36px + 48px + 32px + 12px); }
+}
+
+@media (max-width: 560px) {
+  .track summary { grid-template-columns: 30px 44px minmax(0, 1fr) 44px; gap: 12px; padding: 12px 6px; }
+  .t-art { width: 44px; height: 44px; }
+  .t-badges { display: none; }
+  .t-notes { padding: 0 6px 22px; }
+}

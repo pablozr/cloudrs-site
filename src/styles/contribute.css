@@ -1,0 +1,35 @@
+/* cloudrs site: contribute. Tokens live in global.css. */
+
+/* ---------- poster ---------- */
+.poster {
+  position: relative; overflow: hidden; isolation: isolate;
+  border-radius: 28px; padding: clamp(36px, 6vw, 80px);
+  background: var(--accent-grad); color: #1A0A00;
+  display: grid; grid-template-columns: 1.1fr 1fr; grid-template-areas: "pre pre" "title list" "sub list" "foot foot"; column-gap: 48px;
+}
+.poster-bg {
+  position: absolute; inset: 0; z-index: -1; opacity: .35;
+  background:
+    repeating-radial-gradient(circle at 85% 20%, transparent 0 18px, rgba(26,10,0,.25) 18px 19px),
+    radial-gradient(circle at 10% 110%, rgba(255,255,255,.35), transparent 40%);
+  animation: groove 30s linear infinite;
+}
+@keyframes groove { to { background-position: 0 0, 0 0; transform: rotate(0); } }
+.poster-pre { grid-area: pre; margin: 0 0 18px; font-size: 13px; text-transform: uppercase; letter-spacing: .2em; }
+.poster-title { grid-area: title; margin: 0; font: 800 clamp(64px, 12vw, 168px)/.82 var(--f-display); letter-spacing: -.06em; color: #1A0A00; }
+.poster-sub { grid-area: sub; margin: 20px 0 0; font-size: 18px; font-weight: 600; }
+.poster-sub em { font-family: var(--f-display); font-weight: 800; font-style: normal; background: #1A0A00; color: #FF7A1A; padding: 0 8px; border-radius: 6px; }
+.lineup { grid-area: list; list-style: none; padding: 0; margin: 0; display: grid; align-content: center; }
+.lineup li { display: grid; padding: 14px 0; border-bottom: 2px solid rgba(26,10,0,.25); transition: padding var(--slow) var(--ease-spring); }
+.lineup li:hover { padding-left: 12px; }
+.lineup b { font: 800 clamp(30px, 3.6vw, 46px)/1 var(--f-display); letter-spacing: -.04em; }
+.lineup span { font-size: 14px; font-weight: 600; opacity: .75; margin-top: 4px; }
+.poster-foot { grid-area: foot; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-top: 48px; }
+.poster-foot p { margin: 0; font-size: 12px; text-transform: uppercase; letter-spacing: .14em; }
+.poster .btn-primary { background: #1A0A00; color: #FFF1E8; box-shadow: 0 14px 30px -12px rgba(26,10,0,.6); }
+
+
+@media (max-width: 1080px) {
+  .poster { grid-template-columns: 1fr; grid-template-areas: "pre" "title" "sub" "list" "foot"; }
+  .lineup { margin-top: 36px; }
+}

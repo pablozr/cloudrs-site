@@ -1,0 +1,35 @@
+/* cloudrs site: keys. Tokens live in global.css. */
+
+/* ---------- keys ---------- */
+.keys { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.keycombo { padding: 28px 22px 24px; border-radius: var(--r-xl); background: var(--surface); border: 1px solid var(--line); display: grid; gap: 22px; align-content: start; }
+.caps { display: flex; gap: 8px; height: 64px; }
+.cap {
+  min-width: 64px; height: 60px; padding: 0 14px;
+  display: grid; place-items: center;
+  border-radius: 12px;
+  font: 500 18px/1 var(--f-mono);
+  color: var(--text);
+  background: linear-gradient(180deg, var(--surface-hover), var(--surface-raised));
+  border: 1px solid var(--line-strong);
+  box-shadow: 0 5px 0 var(--canvas-deep), 0 6px 0 var(--line-strong), 0 12px 20px -8px rgba(0,0,0,.5);
+  transition: transform 90ms var(--ease-std), box-shadow 90ms var(--ease-std), color var(--fast), border-color var(--fast);
+}
+.cap-wide { min-width: 170px; }
+.cap.down {
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 var(--canvas-deep), 0 2px 0 var(--accent), 0 0 24px -2px var(--accent-glow);
+  color: var(--accent); border-color: var(--accent);
+}
+.keycombo p { margin: 0; display: grid; gap: 4px; }
+.keycombo b { font: 700 19px/1.2 var(--f-display); letter-spacing: -.02em; }
+.keycombo span { color: var(--text-muted); font-size: 14px; }
+
+
+@media (max-width: 1080px) {
+  .keys { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .keys { grid-template-columns: 1fr; }
+}

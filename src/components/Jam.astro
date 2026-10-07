@@ -1,0 +1,36 @@
+---
+import "../styles/jam.css";
+---
+<section class="section" id="jam" data-section="Jam">
+  <div class="split">
+    <div class="split-copy">
+      <header class="section-head reveal">
+        <p class="label"><span class="badge badge-new">New</span> Jam</p>
+        <h2>Same song.<br>Same second.<br><span class="grad-text">No server.</span></h2>
+        <p class="muted">Start a Jam, share a link, and your friends' players follow yours. Peers connect directly over <a href="https://iroh.computer" target="_blank" rel="noopener">iroh</a>. Only the state travels between you; every player streams its own audio from SoundCloud.</p>
+      </header>
+      <ol class="steps">
+        <li class="reveal"><span class="step-n mono">1</span><div><b>Host a Jam.</b> Your player becomes the authority: track, position, play and pause.</div></li>
+        <li class="reveal" style="--d:1"><span class="step-n mono">2</span><div><b>Share the link.</b> Friends paste it anywhere in cloudrs to join.</div></li>
+        <li class="reveal" style="--d:2"><span class="step-n mono">3</span><div><b>Stay in sync.</b> Clock offset and drift correction keep everyone on the beat.</div></li>
+      </ol>
+      <div class="ticket reveal">
+        <span class="ticket-label mono">invite</span>
+        <code class="mono" id="ticket">cloudrs://jam/</code>
+        <span class="ticket-note">example</span>
+      </div>
+      <ul class="facts reveal">
+        <li><b class="mono">4–9 ms</b> to connect, direct</li>
+        <li><b class="mono">0.000 s</b> idle CPU in 30 s</li>
+        <li><b class="mono">~27 B/s</b> per guest</li>
+      </ul>
+    </div>
+    <div class="jam-stage reveal" style="--d:1">
+      <canvas id="jam-canvas" aria-label="Animation: a host sends sync pulses to five guests, all playing in time" role="img"></canvas>
+    </div>
+  </div>
+</section>
+
+<script>
+  import "../scripts/jam.js";
+</script>

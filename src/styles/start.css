@@ -1,0 +1,20 @@
+/* cloudrs site: start. Tokens live in global.css. */
+
+/* ---------- terminal ---------- */
+.split-start { align-items: start; }
+.terminal { border-radius: var(--r-xl); background: #0D0C0B; border: 1px solid rgba(255,236,220,.14); box-shadow: 0 40px 80px -40px rgba(0,0,0,.7); overflow: hidden; color: #F5EFE8; }
+.term-bar { display: flex; align-items: center; gap: 12px; height: 42px; padding: 0 8px 0 14px; border-bottom: 1px solid rgba(255,236,220,.08); color: #7D756C; font-size: 12px; }
+.term-bar .mono { flex: 1; text-align: center; }
+.term-bar .dots i { background: #2F2B26; }
+.term-bar .dots i:first-child { background: #FF5500; }
+.term-bar .icon-btn { color: #B3AAA0; }
+.term-bar .icon-btn:hover { background: #2F2B26; color: #F5EFE8; }
+.ic-check { display: none; color: var(--success); }
+.copied .ic-copy { display: none; }
+.copied .ic-check { display: block; }
+.term-body { margin: 0; padding: 22px 24px 26px; font-size: 14px; line-height: 1.85; overflow-x: auto; white-space: pre; }
+.term-body .c { color: #7D756C; }
+.term-body .p { color: #FF5500; user-select: none; }
+.caret { display: inline-block; width: 8px; height: 17px; margin-left: 4px; vertical-align: -3px; background: #FF5500; animation: blink 1s steps(1) infinite; }
+
+.start-cta { margin: 0 0 28px; }

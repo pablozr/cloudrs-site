@@ -1,9 +1,8 @@
 // A small generative mix, synthesized live with the Web Audio API.
 // Nothing is downloaded: kick, clap, hats, bass, pad and a plucked arp in A minor at 112 BPM.
 // The page's visuals read the analyser through `Mix.levels()`.
-"use strict";
 
-window.Mix = (() => {
+export const Mix = (() => {
   const BPM = 112;
   const STEP = 60 / BPM / 4; // a sixteenth note
   const LOOKAHEAD = 0.12;

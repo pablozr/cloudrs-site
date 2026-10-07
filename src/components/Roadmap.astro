@@ -1,0 +1,25 @@
+---
+import "../styles/roadmap.css";
+---
+<section class="section section-wide" id="roadmap" data-section="Roadmap">
+  <header class="section-head reveal">
+    <p class="label">Roadmap</p>
+    <h2>Now playing: <span class="grad-text">M4</span>.</h2>
+    <p class="muted">Built in the open, one milestone at a time. The playhead is where we are.</p>
+  </header>
+  <div class="timeline reveal" id="timeline">
+    <canvas class="timeline-wave" id="timeline-wave" aria-hidden="true"></canvas>
+    <ol class="milestones">
+      <li class="done"><span class="ms-tag mono">M0</span><b>Spike</b><span>Workspace, CI, search, HLS playback, first GPUI window</span></li>
+      <li class="done"><span class="ms-tag mono">M1</span><b>Playable MVP</b><span>Search, play, waveform player, paste a link</span></li>
+      <li class="done"><span class="ms-tag mono">M2</span><b>Navigation</b><span>Track, profile and playlist screens, full queue, history</span></li>
+      <li class="done"><span class="ms-tag mono">M3</span><b>Your account</b><span>Sign in, likes, library, feed, following</span></li>
+      <li class="now"><span class="ms-tag mono">M4</span><b>Desktop</b><span>Media keys, shortcuts, audio devices, timed comments</span></li>
+      <li><span class="ms-tag mono">M5</span><b>0.1 release</b><span>Gapless, EQ, mini player, packages, translations</span></li>
+    </ol>
+  </div>
+</section>
+
+<script>
+  import "../scripts/roadmap.js";
+</script>

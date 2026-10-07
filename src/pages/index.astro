@@ -1,0 +1,30 @@
+---
+import Base from "../layouts/Base.astro";
+import Hero from "../components/Hero.astro";
+import Tracklist from "../components/Tracklist.astro";
+import Showcase from "../components/Showcase.astro";
+import Numbers from "../components/Numbers.astro";
+import Jam from "../components/Jam.astro";
+import Rack from "../components/Rack.astro";
+import Keys from "../components/Keys.astro";
+import Roadmap from "../components/Roadmap.astro";
+import Start from "../components/Start.astro";
+import Contribute from "../components/Contribute.astro";
+import Player from "../components/Player.astro";
+---
+<Base
+  title="cloudrs · native SoundCloud for your desktop"
+  description="cloudrs is a native, open source SoundCloud client for the desktop. No Electron, no webview: drawn on the GPU with GPUI, decoded in Rust."
+>
+  <Hero />
+  <Tracklist />
+  <Showcase />
+  <Numbers />
+  <Jam />
+  <Rack />
+  <Keys />
+  <Roadmap />
+  <Start />
+  <Contribute />
+  <Player slot="after" />
+</Base>

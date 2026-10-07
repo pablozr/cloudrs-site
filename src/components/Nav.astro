@@ -1,0 +1,35 @@
+---
+import { asset, page } from "../lib/url.js";
+const home = page("");
+import "../styles/nav.css";
+---
+<header class="nav" id="nav">
+  <a class="brand" href={home} aria-label="cloudrs home">
+    <img src={asset("assets/logo.svg")} alt="" width="30" height="30" class="brand-logo">
+    <span class="wordmark">cloud<span>rs</span></span>
+  </a>
+  <nav class="nav-links" aria-label="Sections">
+    <a href={home + "#tracklist"}>Features</a>
+    <a href={home + "#app"}>The app</a>
+    <a href={home + "#jam"}>Jam</a>
+    <a href={home + "#signal"}>Architecture</a>
+    <a href={home + "#roadmap"}>Roadmap</a>
+  </nav>
+  <div class="nav-actions">
+    <button class="kbd-btn" id="open-palette" aria-label="Open the command palette" data-tip="Jump anywhere"><kbd>Ctrl</kbd><kbd>K</kbd></button>
+    <button class="icon-btn" id="theme-toggle" aria-label="Toggle light and dark theme" data-tip="Theme">
+      <svg class="ic ic-sun"><use href="#i-sun"/></svg><svg class="ic ic-moon"><use href="#i-moon"/></svg>
+    </button>
+    <a class="icon-btn" href="https://github.com/pablozr/cloudrs" target="_blank" rel="noopener" aria-label="cloudrs on GitHub" data-tip="GitHub">
+      <svg class="ic"><use href="#i-github"/></svg>
+    </a>
+    <a class="btn btn-sm btn-primary" href={page("download")} aria-label="Download cloudrs">
+      <svg class="ic"><use href="#i-download"/></svg><span>Download</span>
+    </a>
+  </div>
+</header>
+
+
+<script>
+  import "../scripts/nav.js";
+</script>
